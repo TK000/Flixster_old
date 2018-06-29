@@ -30,6 +30,8 @@ public class MovieListActivity extends AppCompatActivity {
     public final static String API_KEY_PARAM = "api_key";
     // tag for logging from this activity
     public final static String TAG = "MovieListActivity";
+    // for passing info to MovieDetailsActivity
+    //public static final String ITEM_POSITION = "itemPosition";
 
     // instance fields
     AsyncHttpClient client;

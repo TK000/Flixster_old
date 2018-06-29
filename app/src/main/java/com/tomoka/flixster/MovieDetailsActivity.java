@@ -1,8 +1,10 @@
 package com.tomoka.flixster;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -20,7 +22,9 @@ public class MovieDetailsActivity extends AppCompatActivity {
     TextView tvOverview;
     RatingBar rbVoteAverage;
     TextView tvDate;
-    TextView tvGenres;
+
+    // we need to track the item's position in the list
+    //int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +48,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
         // vote average is 0..10, convert to 0..5 by dividing by 2
         float voteAverage = movie.getVoteAverage().floatValue();
         rbVoteAverage.setRating(voteAverage = voteAverage > 0 ? voteAverage / 2.0f : voteAverage);
+
+        // track the position of the item in the list
+        //position = getIntent().getIntExtra(MovieListActivity.ITEM_POSITION, 0);
+    }
+
+    public void onBack(View v) {
+        Intent intent = new Intent(getApplicationContext(), MovieDetailsActivity.class);
+        setResult(RESULT_OK, intent); // set result code and bundle data for response
+        finish(); // closes the edit activity, passes intent back to main
     }
 }
